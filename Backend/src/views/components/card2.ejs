@@ -1,0 +1,33 @@
+<%- include('./header2.ejs') %>
+<section  >
+    <div class="container py-3 h-75">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-6 col-xl-6">
+          <div class="card rounded-3 shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body p-4  ">
+  
+              <p class="mb-2"><span class="h2 me-2">Habbit</span> <span
+                  class="badge bg-danger">checklist</span></p>
+              <p class="text-muted pb-2"><%- data.date %></p>
+  
+              <ul class="list-group rounded-0"> 
+
+                <% let ind = 0 %>
+                <% data.habbit.forEach(habbit => { %>
+                <li class="fs-1 list-group-item border-0 d-flex align-items-center ps-0">
+                    <button type="button" class="btn  btn-secondary"><%-data.habbit_[ind++]%></button>
+                    <button type="button" class="btn ml-3 btn-light"> <%-habbit %></button>
+                 
+                </li>
+
+                <% }) %>
+
+
+              </ul>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 

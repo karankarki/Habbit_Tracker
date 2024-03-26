@@ -1,0 +1,59 @@
+
+<form action="/habbit/addHabbit2" method="post">
+<div class="card" id="card">
+    <div class="input-container">
+
+        <% let v = 400 %>
+        <% habbitList.forEach(habbit => { %>
+            <input type="text" name="h" class="text-input m-3" value=<%-habbit%>  placeholder="Enter text">
+        
+            <% }) %>
+        
+        
+    </div>
+</div>
+
+<div class="button-container">
+    <button type="button" onclick="addText()">Add Habbit</button>
+    <button type="button" onclick="removeText()">Remove Habbit</button>
+    <button  type="submit" >Submit</button>
+</div>
+</form>
+
+<script>
+    var inputTexts = []; // Array to store input text values
+    let ind = 2;
+    function addText() {
+        
+        var inputContainer = document.querySelector('.input-container')
+        var input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.classList.add('text-input');
+        input.classList.add('m-3');
+        input.name = `h${ind++}`;
+        input.setAttribute('placeholder', 'Enter text');
+        inputContainer.appendChild(input);
+       
+    }
+
+    function removeText() {
+        var inputContainer = document.querySelector('.input-container')
+        var inputs = card.querySelectorAll('.text-input');
+        if (inputs.length > 1) {
+            inputContainer.removeChild(inputs[inputs.length - 1]);
+        }
+    }
+
+    // async function submitText() {
+    //     inputTexts = []; // Clear the array before populating with new values
+    //     var inputs = document.querySelectorAll('.text-input');
+    //     inputs.forEach(function(input) {
+    //         inputTexts.push(input.value);
+    //     });
+      
+
+    // }
+</script>
+
+
+

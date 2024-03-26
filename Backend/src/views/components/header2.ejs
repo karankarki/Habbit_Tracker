@@ -1,0 +1,82 @@
+<div class="container d-flex justify-content-between bg-light align-items-center p-2">
+
+
+
+    <div class="timehabit">
+<button type="button" class="btn btn-info" id="dateButton"></button>
+<button type="button" class="btn btn-info" id="dayButton"></button>
+
+    </div>
+
+
+    <div class="date">
+      
+        <form action="/habbit/habbitShow" method="post">
+
+            <input type="date" id="habit_date" onchange="change()"  name="habbit_date">
+            <button type="submit" class="btn btn-dark">Show</button>
+
+
+        </form>
+        <script>
+            // Get today's date
+            var today = new Date();
+          
+            // Format the date to YYYY-MM-DD
+            var formattedDate = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+          
+            // Set the formatted date as the value of the input element
+            document.getElementById('habit_date').value = formattedDate;
+            document.getElementById('dateButton').innerText = formattedDate;
+
+// Get the day (e.g., Monday, Tuesday, etc.)
+            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var dayOfWeek = days[today.getDay()];
+
+// Set the day of the week as the text of the second button
+            document.getElementById('dayButton').innerText = dayOfWeek;
+
+
+            function change(){
+                const date = document.getElementById('habit_date').value;
+                document.getElementById('dateButton').innerText = date;
+
+
+             
+                const parts = date.split('-');
+                const year = parseInt(parts[0]);
+                const month = parseInt(parts[1]) - 1; // Months are 0-indexed
+                const day = parseInt(parts[2]);
+
+                // Create a Date object
+                const myDate = new Date(year, month, day);
+
+                // Get the day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+                const dayOfWeek = myDate.getDay();
+
+                // Array of days
+                const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+                // Get the name of the day using the index obtained from getDay()
+                const dayName = days[dayOfWeek];
+
+
+                document.getElementById('dayButton').innerText = dayName;
+
+
+
+
+                
+
+            }
+
+
+
+          </script>
+
+
+    </div>
+
+
+
+</div>

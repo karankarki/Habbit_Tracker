@@ -1,0 +1,105 @@
+<section>
+  <div class="container py-3 h-75">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 col-xl-6">
+        <div class="card rounded-3 shadow p-3 mb-5 bg-white rounded">
+          <div class="card-body p-4  ">
+
+            <p class="mb-2"><span class="h2 me-2">Habbit</span> <span class="badge bg-danger">checklist</span></p>
+            <p class="text-muted pb-2"><%-data.date %></p>
+
+            <ul class="list-group rounded-0">
+
+
+              <% if(data.check){%>
+                <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                  <button type="button" class="btn ml-3 btn-light">No habbits are Avilable for today</button>
+                </li>
+                <% }else {%>
+                  <% let ind=0 %>
+                    <% data.habbitList.forEach(habbit=> { %>
+                      <li class="fs-1 list-group-item border-0 d-flex align-items-center ps-0">
+                        <% if(data.habbitList_[ind]=="default" || data.habbitList_[ind]=="Default" ){%> <button
+                          onclick="btnChange(this.id)" id="btn<%-ind%>" type="button" class="btn  btn-secondary">
+                          <%-data.habbitList_[ind++]%></button>
+
+
+                            <% } else if(data.habbitList_[ind]=="done" || data.habbitList_[ind]=="Done" ) {%>
+
+
+                              <button onclick="btnChange(this.id)" id="btn<%-ind%>" type="button"
+                                class="btn  btn-success"><%-data.habbitList_[ind++]%></button>
+
+
+                              <% }else{%>
+
+                                <button onclick="btnChange(this.id)" id="btn<%-ind%>" type="button"
+                                  class="btn  btn-danger"><%-data.habbitList_[ind++]%></button>
+
+                                <% }%>
+
+                                  <button type="button" class="btn ml-3 btn-light"><%-habbit%></button>
+
+                      </li>
+
+                      <% }) %>
+                        <% }%>
+
+            </ul>
+
+
+
+            <div class="divider d-flex align-items-center my-4">
+
+              <form action="/habbit/addHabbit" method="post">
+                <button type="submit" class="btn-dark">Update Habbits</button>
+              </form>
+
+
+              <form action="/habbit/submitHabbit" method="post">
+                <input type="hidden" name="hiddenList" id="hiddenGem" value="">
+                <button type="submit" class="btn-dark ml-3">Submit</button>
+              </form>
+            </div>
+
+            <script>
+
+              function btnChange(id_) {
+
+                let docu = document.getElementById(id_);
+                if (docu.innerText === "default") {
+
+                  docu.innerText = "Done"
+                  docu.classList.remove("btn-secondary");
+                  docu.classList.add("btn-success");
+                }
+                else if (docu.innerText === "Done") {
+
+                  docu.innerText = "Not_Done"
+                  docu.classList.remove("btn-success");
+                  docu.classList.add("btn-danger");
+
+                }
+
+                else {
+
+                  docu.innerText = "default"
+                  docu.classList.remove("btn-danger");
+                  docu.classList.add("btn-secondary");
+                }
+
+                let hiddenGem = document.getElementById("hiddenGem");
+                let habbitList_Values = document.querySelectorAll('[id^="btn"]');
+                let updatedValue = Array.from(habbitList_Values).map(btn => btn.innerText).join(',');
+                hiddenGem.value = updatedValue;
+              }
+
+            </script>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
