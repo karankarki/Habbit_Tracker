@@ -4,7 +4,7 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://drive.google.com/file/d/1qgZlbNJZAZdZngVlu652rnm-83lCq7No/view?usp=drive_link" alt="project-screenshot" width="600" height="600/">
+[<img src="https://drive.google.com/file/d/1qgZlbNJZAZdZngVlu652rnm-83lCq7No/view?usp=drive_link" alt="project-screenshot" width="600" height="600/">](https://drive.google.com/file/d/11je2pauTHdRUGMsVRMRLWssQNEaXadrV/view?usp=sharing)
 
 <img src="https://drive.google.com/file/d/11je2pauTHdRUGMsVRMRLWssQNEaXadrV/view?usp=drive_link" alt="project-screenshot" width="600" height="600/">
 
